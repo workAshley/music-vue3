@@ -36,7 +36,7 @@
 </template>
 
 <script>
-import Scroll from '@/components/wrap-scroll/index'
+import Scroll from '@/components/base/scroll/index'
 import useFixed from './use-fixed'
 import useShortcut from './use-shortcut'
 

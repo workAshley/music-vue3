@@ -1,14 +1,36 @@
 <template>
-  <div class="singer">歌手页面</div>
+  <div class="singer" v-loading="!singers.length">
+    <index-list :data="singers" @select="selectSingers"></index-list>
+    <router-view :singer="selectedSinger"></router-view>
+  </div>
 </template>
 
 <script>
 import { getSingerList } from '@/service/singer'
+import IndexList from '@/components/index-list/index-list'
 export default {
   name: 'singer',
+  components: {
+    IndexList
+  },
+  data() {
+    return {
+      singers: [],
+      selectedSinger: null
+    }
+  },
   async created() {
     const result = await getSingerList()
+    this.singers = result.singers
     console.log(result)
+  },
+  methods: {
+    selectSingers(singer) {
+      this.selectedSinger = singer
+      this.$router.push({
+        path: `/singer/${singer.mid}`
+      })
+    }
   }
 }
 </script>
