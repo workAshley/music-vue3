@@ -32,10 +32,6 @@ const routes = [
   {
     path: '/search',
     component: Search
-  },
-  {
-    path: '/singer-detail',
-    component: SingerDetail
   }
 ]
 
